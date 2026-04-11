@@ -177,6 +177,9 @@
 		</div>
 	</div>
 	<script>
+		addBtn.addEventListener("click", addNote); 
+		clearAllBtn.addEventListener("click", clearAllNotes); 
+		
 		let notes  = [];   // each entry: { id, title, content } 
 		let nextId = 1; 
 
