@@ -200,6 +200,21 @@
 		const windowSizeSpan  = document.getElementById("windowSize"); 
 		const userAgentSpan   = document.getElementById("userAgent");
 
+		function init() { 
+	  		addSampleNotes();    // populate demo notes 
+	  		updateWindowSize();  // BOM: show current size 
+	  		showUserAgent();     // BOM: show user agent 
+	  		addBtn.addEventListener("click", addNote); 
+	  		clearAllBtn.addEventListener("click", clearAllNotes); 
+	  		titleInput.addEventListener("keydown", (e) => { 
+	  			if (e.key === "Enter") { 
+	    			addNote(); 
+	  			} 
+			}); 
+		} 
+ 
+		init();   // ← call init when the page loads
+		
 		notesContainer.addEventListener("click", (e) => { 
 		  	// find the closest ancestor (or self) that is a delete button 
 		  	const btn = e.target.closest('[data-action="delete"]'); 
@@ -374,20 +389,16 @@
 		  } 
 		}
 
-		function init() { 
-	  		addSampleNotes();    // populate demo notes 
-	  		updateWindowSize();  // BOM: show current size 
-	  		showUserAgent();     // BOM: show user agent 
-	  		addBtn.addEventListener("click", addNote); 
-	  		clearAllBtn.addEventListener("click", clearAllNotes); 
-	  		titleInput.addEventListener("keydown", (e) => { 
-	  			if (e.key === "Enter") { 
-	    			addNote(); 
-	  			} 
-			}); 
-		} 
- 
-		init();   // ← call init when the page loads
+		function updateWindowSize() { 
+	  		const w = window.innerWidth; 
+	  		const h = window.innerHeight; 
+	  		let category; 
+	  		if (w < 480)       category = "📱📱 Mobile"; 
+	  			else if (w < 1024) category = "💻💻 Tablet"; 
+	  			else               category = "🖥🖥 Desktop"; 
+	  		windowSizeSpan.textContent = `${w} x ${h} px  (${category})`; 
+		}
+
 	</script>
 </body>
 </html>
