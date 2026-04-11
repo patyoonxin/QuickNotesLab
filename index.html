@@ -269,6 +269,27 @@
 			}); 
 			 
 			updateCounter(); 
+
+			// In renderNotes(), create the edit button: 
+			const editBtn = document.createElement("button"); 
+			editBtn.textContent = "✏ Edit"; 
+			editBtn.setAttribute("data-action", "edit"); 
+			editBtn.setAttribute("data-id", note.id); 
+		 
+			// In the event delegation listener, handle "edit": 
+			const editTarget = e.target.closest('[data-action="edit"]'); 
+			if (editTarget) { 
+		  		const id    = parseInt(editTarget.getAttribute("data-id"), 10); 
+		  		const found = notes.find(n => n.id === id); 
+		  		if (found) { 
+		    		// BOM: prompt() returns new string or null 
+		    		const newTitle = prompt("New title:", found.title); 
+		    		if (newTitle !== null && newTitle.trim() !== "") { 
+		      			found.title = newTitle.trim(); 
+		      			renderNotes(); 
+		    		} 
+		  		} 
+			} 
 		} 
 
 		function addNote() { 
