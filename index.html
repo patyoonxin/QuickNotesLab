@@ -126,6 +126,10 @@
 		hr { 
 			margin: 1rem 0; 
 		}
+		footer { 
+	  		text-align: center; margin-top: 2rem; 
+	  		font-size: 0.7rem; color: #5b6e8c; 
+		} 
 	</style>
 </head>
 <body>
@@ -175,6 +179,12 @@
 				</button>	
 		 	</div>
 		</div>
+		<!-- HTML after </div> .grid --> 
+		<footer> 
+	  		💡💡 BOM: confirm() on delete · alert() on empty title 
+	     		· resize event updates window size. 
+		</footer> 
+
 	</div>
 	<script>
 		
@@ -189,9 +199,6 @@
 		const noteCounterSpan = document.getElementById("noteCounter"); 
 		const windowSizeSpan  = document.getElementById("windowSize"); 
 		const userAgentSpan   = document.getElementById("userAgent");
-
-		addBtn.addEventListener("click", addNote); 
-		clearAllBtn.addEventListener("click", clearAllNotes); 
 
 		notesContainer.addEventListener("click", (e) => { 
 		  	// find the closest ancestor (or self) that is a delete button 
@@ -354,6 +361,6 @@
 	  		clearAllBtn.addEventListener("click", clearAllNotes); 
 		} 
  
-init();   // ← call init when the page loads
+		init();   // ← call init when the page loads
 </body>
 </html>
