@@ -192,7 +192,7 @@
 
 		addBtn.addEventListener("click", addNote); 
 		clearAllBtn.addEventListener("click", clearAllNotes); 
-		
+
 		notesContainer.addEventListener("click", (e) => { 
 		  	// find the closest ancestor (or self) that is a delete button 
 		  	const btn = e.target.closest('[data-action="delete"]'); 
@@ -313,5 +313,11 @@
 		    	alert("✨ All notes have been cleared."); 
 		  	} 
 		} 
+
+		function updateWindowSize() { 
+		  	const w = window.innerWidth; 
+		  	const h = window.innerHeight; 
+		  	windowSizeSpan.textContent = `${w} x ${h} px`; 
+		}
 </body>
 </html>
